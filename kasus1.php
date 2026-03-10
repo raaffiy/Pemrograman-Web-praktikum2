@@ -1,5 +1,8 @@
-<?php
+<!-- cara menjalankan code -->
+<!-- 1. Simpan code ini dalam file bernama kasus1.php -->
+<!-- 2. Jalankan server lokal (misalnya XAMPP) dan akses file ini melalui browser dengan URL seperti: http://localhost/kasus1.php?n=18 -->
 
+<?php
 function isPrime($n){
     if($n < 2) return false;
     if($n == 2) return true;
@@ -26,7 +29,6 @@ function countDivisors($n){
 }
 
 $N = isset($_GET['n']) ? intval($_GET['n']) : 0;
-
 if($N == 0){
     echo "Masukkan nilai N di URL, contoh: ?n=18";
     exit;
@@ -36,15 +38,10 @@ $bestP = 0;
 $maxWays = 0;
 
 for($p = 2; $p <= $N; $p++){
-
     if(!isPrime($p)) continue;
-
     if($N % $p != 0) continue;
-
     $totalEggs = $N * $p;
-
     $ways = countDivisors($totalEggs);
-
     if($ways > $maxWays){
         $maxWays = $ways;
         $bestP = $p;
@@ -54,7 +51,5 @@ for($p = 2; $p <= $N; $p++){
 if($bestP == 0){
     $bestP = $N;
 }
-
 echo $bestP;
-
 ?>
